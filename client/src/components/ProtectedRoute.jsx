@@ -3,20 +3,18 @@ import { Navigate } from "react-router-dom";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { hideLoading, showLoadings } from "../redux/features/alertSlice";
-// import { token } from "morgan";
 import { setUser } from "../redux/features/userSlice";
 
 function ProtectedRoute({ children }) {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
 
-  //get user
-
+  // get user
   const getUser = async () => {
     try {
       // dispatch(showLoadings());
       const res = await axios.post(
-        "/api/v1/user/getUserData",
+        "https://vercel-backend-henna.vercel.app/api/v1/user/getUserData",
         {
           token: localStorage.getItem("token"),
         },

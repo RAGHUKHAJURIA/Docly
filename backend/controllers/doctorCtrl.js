@@ -47,7 +47,7 @@ const updateProfileController = async (req, res) => {
 
 const getDoctorByIdController = async (req, res) => {
   try {
-    const doctor = await doctorModel.findOne({ _id: req.body.doctorId });
+    const doctor = await doctorModel.findOne({ _id: req.doctorId });
     res.status(200).send({
       success: true,
       message: "Sigle Doc Info Fetched",
@@ -88,7 +88,7 @@ const doctorAppointmentsController = async (req, res) => {
 const updateStatusController = async (req, res) => {
   try {
     const { appointmentId, status } = req.body;
-    
+
     // Validate input
     if (!appointmentId || !status) {
       return res.status(400).send({
@@ -99,7 +99,7 @@ const updateStatusController = async (req, res) => {
 
     // Update appointment
     const appointment = await appointmentModel.findByIdAndUpdate(
-      appointmentId, 
+      appointmentId,
       { status },
       { new: true } // Return updated document
     );

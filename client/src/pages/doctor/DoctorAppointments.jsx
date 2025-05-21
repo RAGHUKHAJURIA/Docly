@@ -17,11 +17,14 @@ const DoctorAppointments = () => {
 
   const getAppointments = async () => {
     try {
-      const res = await axios.get("/api/v1/doctor/doctor-appointments", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      const res = await axios.get(
+        "https://vercel-backend-henna.vercel.app/api/v1/doctor/doctor-appointments",
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
       if (res.data.success) {
         setAppointments(res.data.data);
       }
@@ -37,7 +40,7 @@ const DoctorAppointments = () => {
   const handleStatus = async (record, status) => {
     try {
       const res = await axios.post(
-        "/api/v1/doctor/update-status",
+        "https://vercel-backend-henna.vercel.app/api/v1/doctor/update-status",
         {
           appointmentId: record._id,
           status,

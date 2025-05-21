@@ -15,7 +15,7 @@ const Login = () => {
   const onFinishHandler = async (values) => {
     try {
       dispatch(showLoadings());
-      const res = await axios.post("/api/v1/user/login", values);
+      const res = await axios.post("https://vercel-backend-henna.vercel.app/api/v1/user/login", values);
       window.location.reload();
       dispatch(hideLoading());
       if (res.data.success) {

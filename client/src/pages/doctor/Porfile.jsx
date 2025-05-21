@@ -36,7 +36,7 @@ const Profile = () => {
     try {
       dispatch(showLoadings());
       const res = await axios.post(
-        "/api/v1/doctor/updateProfile",
+        "https://vercel-backend-henna.vercel.app/api/v1/doctor/updateProfile",
         {
           ...values,
           userId: user._id,
@@ -69,7 +69,7 @@ const Profile = () => {
   const getDoctorInfo = async () => {
     try {
       const res = await axios.post(
-        "/api/v1/doctor/getDoctorInfo",
+        "https://vercel-backend-henna.vercel.app/api/v1/doctor/getDoctorInfo",
         { userId: params.id },
         {
           headers: {
